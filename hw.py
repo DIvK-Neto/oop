@@ -35,7 +35,7 @@ class Student(Comparison):
             else:
                 lecturer.grades[course] = [grade]
         else:
-            print('у преподователя нет оценки')
+            print('вы не можете оценить преподавателя')
 
     def __str__(self):
         total = get_score(self.grades)
@@ -89,12 +89,12 @@ def average_rating(param: list, course: str):
 # Информация о студентах
 some_student_1 = Student('Ruoy', 'Eman', 'm')
 some_student_1.finished_courses = ['Основы Git']
-some_student_1.courses_in_progress = ['Python', 'Java']
+some_student_1.courses_in_progress += ['Python', 'Java']
 print(some_student_1)
 
 some_student_2 = Student('Some', 'Bady', 'w')
 some_student_2.finished_courses = ['Введение в программирование']
-some_student_2.courses_in_progress = ['Python', 'Git']
+some_student_2.courses_in_progress += ['Python', 'Git']
 print(some_student_2)
 
 
@@ -120,17 +120,17 @@ print(reviewer_2)
 
 # Проверка методов
 some_student_1.rate_lecturer(lecturer_1, 'Git', 10)  # несотв. лектора и курса
-some_student_1.rate_lecturer(lecturer_1, 'Python', 6)
-some_student_2.rate_lecturer(lecturer_1, 'Python', 9)
+some_student_1.rate_lecturer(lecturer_1, 'Python', 8)
+some_student_2.rate_lecturer(lecturer_1, 'Python', 10)
 some_student_2.rate_lecturer(lecturer_2, 'Git', 5)
 print('Оценки 1-го преподавателя', lecturer_1.grades)
 
-reviewer_1.rate_hw(some_student_1, 'Python', 5)
+reviewer_1.rate_hw(some_student_1, 'Python', 7)
 reviewer_1.rate_hw(some_student_1, 'Git', 7)
 print(f'Оценки 1-го студента {some_student_1.grades}')
 
-reviewer_2.rate_hw(some_student_2, 'Git', 8)
-reviewer_1.rate_hw(some_student_2, 'Python', 7)
+reviewer_2.rate_hw(some_student_2, 'Git', 9)
+reviewer_1.rate_hw(some_student_2, 'Python', 6)
 print(f'Оценки 2-го студента {some_student_2.grades}')
 
 
