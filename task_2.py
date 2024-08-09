@@ -1,6 +1,7 @@
 from functools import total_ordering
 
 
+# Подсчёт баллов
 def get_score(arg: dict):
     total = float(0)
     if arg:
@@ -10,6 +11,7 @@ def get_score(arg: dict):
     return total
 
 
+# Декоратор
 @total_ordering
 class Comparison():
     def __lt__(self, other):
@@ -35,7 +37,7 @@ class Student(Comparison):
             else:
                 lecturer.grades[course] = [grade]
         else:
-            print('у преподователя нет оценки')
+            print('у преподователя нет оценок')
 
     def __str__(self):
         total = get_score(self.grades)
@@ -119,7 +121,7 @@ print(reviewer_2)
 
 
 # Проверка методов
-some_student_1.rate_lecturer(lecturer_1, 'Git', 10)  # несотв. лектора и курса
+some_student_1.rate_lecturer(lecturer_1, 'Git', 10)
 some_student_1.rate_lecturer(lecturer_1, 'Python', 6)
 some_student_2.rate_lecturer(lecturer_1, 'Python', 9)
 some_student_2.rate_lecturer(lecturer_2, 'Git', 5)
@@ -141,14 +143,14 @@ print(some_student_1 == some_student_2)
 print(some_student_1 < some_student_2)
 
 
-# сравнение лекторов
+# Сравнение лекторов
 print(get_score(lecturer_1.grades), get_score(lecturer_2.grades))
 print(lecturer_1 > lecturer_2)
 print(lecturer_1 == lecturer_2)
 print(lecturer_1 < lecturer_2)
 
 
-# сравнение средней оценки
+# Сравнение средней оценки
 print(average_rating([some_student_1, some_student_2], 'Python'))
 print(average_rating([some_student_1, some_student_2], 'Git'))
 print(average_rating([some_student_1, some_student_2], 'Java'))
